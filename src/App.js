@@ -7,6 +7,14 @@ function App() {
   const [gameStarted, setGameStarted] = useState(false);
 
   const startGame = () => {
+    // 게임 시작 시 오디오 컨텍스트 초기화
+    try {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      audioContext.resume();
+    } catch (e) {
+      console.log('Audio context initialization failed:', e);
+    }
+    
     setGameStarted(true);
   };
 

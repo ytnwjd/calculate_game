@@ -1,6 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './MathGame.css';
 
+// 오디오 파일 import
+import successAudioFile from '../assets/audio/8.mp3';
+import screamAudioFile from '../assets/audio/screaming.mp3';
+
+// 이미지 파일 import
+import successImage from '../assets/images/8.png';
+import image1 from '../assets/images/images2.jpeg';
+import image2 from '../assets/images/img3.jpg';
+import image3 from '../assets/images/images1.jpeg';
+import image4 from '../assets/images/images4.jpg';
+import image5 from '../assets/images/img.jpeg';
+import image6 from '../assets/images/img2.jpg';
+import image7 from '../assets/images/images5.jpeg';
+
 const MathGame = () => {
   const [problem, setProblem] = useState({ num1: 0, num2: 0, num3: 0, operator1: '+', operator2: '+', answer: 0 });
   const [userAnswer, setUserAnswer] = useState('');
@@ -9,8 +23,30 @@ const MathGame = () => {
 
   const [showImage, setShowImage] = useState(false);
   const [randomImage, setRandomImage] = useState('');
-  const [audio] = useState(new Audio('/audio/screaming.mp3'));
-  const [successAudio] = useState(new Audio('/audio/8.mp3'));
+  const [audioContext, setAudioContext] = useState(null);
+
+  // 오디오 컨텍스트 초기화
+  const initAudioContext = () => {
+    if (!audioContext) {
+      const context = new (window.AudioContext || window.webkitAudioContext)();
+      setAudioContext(context);
+    }
+  };
+
+  const playAudio = async (audioFile) => {
+    try {
+      // 오디오 컨텍스트가 일시정지 상태라면 재개
+      if (audioContext && audioContext.state === 'suspended') {
+        await audioContext.resume();
+      }
+      
+      const audio = new Audio(audioFile);
+      audio.currentTime = 0;
+      await audio.play();
+    } catch (e) {
+      console.log('Audio play failed:', e);
+    }
+  };
 
   const generateProblem = () => {
     
@@ -39,13 +75,13 @@ const MathGame = () => {
 
   const getRandomImage = () => {
     const images = [
-      '/images/images2.jpeg',
-      '/images/img3.jpg',
-      '/images/images1.jpeg',
-      '/images/images4.jpg',
-      '/images/img.jpeg',
-      '/images/img2.jpg',
-      '/images/images5.jpeg'
+      image1,
+      image2,
+      image3,
+      image4,
+      image5,
+      image6,
+      image7
     ];
     const randomIndex = Math.floor(Math.random() * images.length);
     setRandomImage(images[randomIndex]);
@@ -60,16 +96,23 @@ const MathGame = () => {
   };
 
   const checkAnswer = () => {
+    // 오디오 컨텍스트 초기화
+    initAudioContext();
+    
     const userNum = parseInt(userAnswer);
     if (userNum === problem.answer) {
       setGameState('success');
       setShowImage(true);
-      successAudio.play().catch(e => console.log('Success audio play failed:', e));
+      playAudio(successAudioFile);
+      // 성공 후 3초 뒤에 다음 문제로 넘어가기
+      setTimeout(() => {
+        resetGame();
+      }, 3000);
     } else {
       setGameState('failed');
       getRandomImage();
       setShowImage(true);
-      audio.play().catch(e => console.log('Audio play failed:', e));
+      playAudio(screamAudioFile);
       setTimeout(() => {
         resetGame();
       }, 4500);
@@ -89,10 +132,13 @@ const MathGame = () => {
       }, 1000);
       return () => clearTimeout(timer);
     } else if (timeLeft === 0 && gameState === 'playing') {
+      // 오디오 컨텍스트 초기화
+      initAudioContext();
+      
       setGameState('failed');
       getRandomImage();
       setShowImage(true);
-      audio.play().catch(e => console.log('Audio play failed:', e));
+      playAudio(screamAudioFile);
       setTimeout(() => {
         resetGame();
       }, 4500);
@@ -151,7 +197,7 @@ const MathGame = () => {
       {gameState === 'success' && (
         <div className="result success">
           <div className="image">
-            <img src="/images/8.png" alt="성공 이미지" />
+            <img src={successImage} alt="성공 이미지" />
           </div>
         </div>
       )}
