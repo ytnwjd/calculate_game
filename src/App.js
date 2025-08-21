@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import MathGame from './components/MathGame';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1> </h1>
+        <p>30초 안에 정답을 맞추지 못하면... </p>
       </header>
+      
+      <main>
+        <MathGame />
+      </main>
     </div>
   );
 }
