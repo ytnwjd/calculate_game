@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/ytnwjd/calculate_game/static/css/main.1b9992a8.css",
-    "main.js": "/ytnwjd/calculate_game/static/js/main.6eb67097.js",
-    "static/js/453.c76b617a.chunk.js": "/ytnwjd/calculate_game/static/js/453.c76b617a.chunk.js",
-    "index.html": "/ytnwjd/calculate_game/index.html",
-    "main.1b9992a8.css.map": "/ytnwjd/calculate_game/static/css/main.1b9992a8.css.map",
-    "main.6eb67097.js.map": "/ytnwjd/calculate_game/static/js/main.6eb67097.js.map",
-    "453.c76b617a.chunk.js.map": "/ytnwjd/calculate_game/static/js/453.c76b617a.chunk.js.map"
+    "main.css": "/calculate_game/static/css/main.1b9992a8.css",
+    "main.js": "/calculate_game/static/js/main.0c2428a4.js",
+    "static/js/453.c76b617a.chunk.js": "/calculate_game/static/js/453.c76b617a.chunk.js",
+    "static/media/8.png": "/calculate_game/static/media/8.56a8264bd51ed0adaf45.png",
+    "static/media/8.mp3": "/calculate_game/static/media/8.5be325ad4e261d8f9322.mp3",
+    "static/media/screaming.mp3": "/calculate_game/static/media/screaming.54badf6a456361c79575.mp3",
+    "static/media/img3.jpg": "/calculate_game/static/media/img3.8b3b5cd088c8a3d92c34.jpg",
+    "static/media/img2.jpg": "/calculate_game/static/media/img2.8795cb979ac99263d2f8.jpg",
+    "static/media/images4.jpg": "/calculate_game/static/media/images4.08e72a9c3cb470c4d70a.jpg",
+    "static/media/img.jpeg": "/calculate_game/static/media/img.d3b1af8c2e6895db77a9.jpeg",
+    "index.html": "/calculate_game/index.html",
+    "main.1b9992a8.css.map": "/calculate_game/static/css/main.1b9992a8.css.map",
+    "main.0c2428a4.js.map": "/calculate_game/static/js/main.0c2428a4.js.map",
+    "453.c76b617a.chunk.js.map": "/calculate_game/static/js/453.c76b617a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b9992a8.css",
-    "static/js/main.6eb67097.js"
+    "static/js/main.0c2428a4.js"
   ]
 }
