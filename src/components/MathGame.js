@@ -104,10 +104,6 @@ const MathGame = () => {
       setGameState('success');
       setShowImage(true);
       playAudio(successAudioFile);
-      // 성공 후 3초 뒤에 다음 문제로 넘어가기
-      setTimeout(() => {
-        resetGame();
-      }, 3000);
     } else {
       setGameState('failed');
       getRandomImage();

@@ -2,7 +2,7 @@
   "name": "calcul",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/ytnwjd/calculate_game",
+  "homepage": "https://ytnwjd.github.io/calculate_game",
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",
