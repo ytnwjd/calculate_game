@@ -9,6 +9,7 @@ const MathGame = () => {
 
   const [showImage, setShowImage] = useState(false);
   const [randomImage, setRandomImage] = useState('');
+  const [audio] = useState(new Audio('/audio/screaming.mp3'));
 
   const generateProblem = () => {
     
@@ -66,6 +67,7 @@ const MathGame = () => {
       setGameState('failed');
       getRandomImage();
       setShowImage(true);
+      audio.play().catch(e => console.log('Audio play failed:', e));
       setTimeout(() => {
         resetGame();
       }, 4500);
@@ -88,11 +90,19 @@ const MathGame = () => {
       setGameState('failed');
       getRandomImage();
       setShowImage(true);
+      audio.play().catch(e => console.log('Audio play failed:', e));
       setTimeout(() => {
         resetGame();
       }, 4500);
     }
   }, [timeLeft, gameState]);
+
+  useEffect(() => {
+    if (onWarning) {
+      const shouldWarn = timeLeft <= 4 && gameState === 'playing';
+      onWarning(shouldWarn);
+    }
+  }, [timeLeft, gameState, onWarning]);
 
   // 초기 문제 생성
   useEffect(() => {
