@@ -57,6 +57,67 @@ main {
   z-index: 1;
 }
 
+.home-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.start-container {
+  text-align: center;
+}
+
+.start-btn {
+  padding: 20px 40px;
+  font-size: 24px;
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: #000000;
+  border: 3px solid #ff6666;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.start-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 5px 25px rgba(255, 0, 0, 0.7),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #ff6666 0%, #ff0000 100%);
+}
+
+.home-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff0000;
+  border: 2px solid #ff0000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-shadow: 0 0 10px #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.home-btn:hover {
+  background: rgba(255, 0, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
+}
+
 @keyframes flicker {
   0%, 100% {
     text-shadow: 
