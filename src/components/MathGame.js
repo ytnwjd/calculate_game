@@ -97,17 +97,27 @@ const MathGame = () => {
     }
   }, [timeLeft, gameState]);
 
-  useEffect(() => {
-    if (onWarning) {
-      const shouldWarn = timeLeft <= 4 && gameState === 'playing';
-      onWarning(shouldWarn);
-    }
-  }, [timeLeft, gameState, onWarning]);
+  // useEffect(() => {
+  //   if (onWarning) {
+  //     const shouldWarn = timeLeft <= 4 && gameState === 'playing';
+  //     onWarning(shouldWarn);
+  //   }
+  // }, [timeLeft, gameState]);
 
   // 초기 문제 생성
   useEffect(() => {
     generateProblem();
   }, []);
+
+  // 입력 필드에 자동 포커스
+  useEffect(() => {
+    if (gameState === 'playing') {
+      const inputElement = document.querySelector('.answer-input');
+      if (inputElement) {
+        inputElement.focus();
+      }
+    }
+  }, [gameState]);
 
   return (
     <div className="math-game">
