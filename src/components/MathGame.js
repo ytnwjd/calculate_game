@@ -10,6 +10,7 @@ const MathGame = () => {
   const [showImage, setShowImage] = useState(false);
   const [randomImage, setRandomImage] = useState('');
   const [audio] = useState(new Audio('/audio/screaming.mp3'));
+  const [successAudio] = useState(new Audio('/audio/8.mp3'));
 
   const generateProblem = () => {
     
@@ -62,7 +63,8 @@ const MathGame = () => {
     const userNum = parseInt(userAnswer);
     if (userNum === problem.answer) {
       setGameState('success');
-      setShowImage(true);      
+      setShowImage(true);
+      successAudio.play().catch(e => console.log('Success audio play failed:', e));
     } else {
       setGameState('failed');
       getRandomImage();
